@@ -2,11 +2,41 @@
 //
 
 #include <iostream>
+#include <string>
 
+float calculate(float &num1, float &num2, std::string &operation) {
+    if (operation == "+") {
+        return num1 + num2;
+    }
+    else if (operation == "-") {
+        return num1 - num2;
+    }
+    else if (operation == "*") {
+        return num1 * num2;
+    }
+    else {
+        return num1 / num2;
+    }
+}
 
-int main()
-{
-    std::cout << "Hello World!\n";
+int main() {
+    std::setlocale(LC_ALL, "RU");
+    float num1, num2;
+    std::string operation;
+
+    std::cout << "Введите первое число: ";
+    std::cin >> num1;
+
+    std::cout << "Введите операцию (+, -, *, /): ";
+    std::cin >> operation;
+
+    std::cout << "Введите второе число: ";
+    std::cin >> num2;
+
+    float result = calculate(num1, num2, operation);
+    std::cout << "Результат: " << result << std::endl;
+
+    return 0;
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
