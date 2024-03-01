@@ -7,18 +7,8 @@
 
 bool isInt(const std::string& str)
 {
-	for (char const& c : str) {
-		if (std::isdigit(c) == 0) return false;
-	}
-
-	return true;
-}
-
-bool isDouble(const std::string& str)
-{
 	std::istringstream iss(str);
-	double value;
-	
+	int value;
 	if (!(iss >> value && iss.eof()))
 	{
 		return false;
@@ -26,6 +16,37 @@ bool isDouble(const std::string& str)
 	else
 	{
 		return true;
+	}
+}
+bool isDouble(const std::string& str)
+{
+	std::istringstream iss(str);
+	double value;
+	
+	size_t dotPos = str.find('.');
+	if (dotPos != std::string::npos)
+	{
+		int decimalPointPos = static_cast<int>(dotPos);
+		int countPoint = std::count(str.begin(), str.end(), '.');
+		if ((decimalPointPos > 0 && decimalPointPos < str.length() - 1) && countPoint < 2) 
+		{
+			if (!(iss >> value && iss.eof()))
+			{
+				return false;
+			}
+			else
+			{
+				return true;
+			}
+		}
+		else
+		{
+			return false;
+		}
+	}
+	else 
+	{
+		return false;
 	}
 }
 
@@ -47,7 +68,8 @@ int main(void)
 	std::cout <<"Enter value: " << std::endl;
 	if (std::cin >> std::noskipws >> str) {
 		std::cout <<"isInt?: " << isInt(str) << std::endl;
-		std::cout << "isDob?: " << isDouble(str)<<std::endl;
+		std::cout << "isDob?: " << isDouble(str) << std::endl;
+
 		std::cout << "isChar?: " << isChar(str) << std::endl;
 	}else
 	{

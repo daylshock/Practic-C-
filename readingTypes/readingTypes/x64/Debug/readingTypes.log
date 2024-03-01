@@ -1,2 +1,3 @@
 ﻿  readingTypes.cpp
+C:\Users\Долбаеб\source\repos2\readingTypes\readingTypes\readingTypes.cpp(30,18): warning C4244: инициализация: преобразование "__int64" в "int", возможна потеря данных
   readingTypes.vcxproj -> C:\Users\Долбаеб\source\repos2\readingTypes\x64\Debug\readingTypes.exe
