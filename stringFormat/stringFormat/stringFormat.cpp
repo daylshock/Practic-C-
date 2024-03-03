@@ -1,7 +1,7 @@
 ﻿#include <iostream>
 #include <time.h>
 #include <random>
-
+#include <math.h>
 struct MyStruct
 {
 public:
@@ -23,11 +23,14 @@ void MyStruct::randEquation(MyStruct* mystruct_t)
 {
 	srand(std::time(NULL));
 	int Y_VAR = rand() % ( - mystruct_t->Y_MAX + 1) + mystruct_t->Y_MIN;
-	int K_VAR = rand() % (-mystruct_t->K_MAX + 1) + mystruct_t->K_MIN;
+	int K_VAR = rand() % ( - mystruct_t->K_MAX + 1) + mystruct_t->K_MIN;
+	 
 	for (int i = 0; i < mystruct_t->COUNT; ++i) 
 	{
 		int C_VAR = std::rand() % 19 + 1;
+		float RESULT = float((Y_VAR / K_VAR) - (C_VAR / K_VAR));
 		std::cout << " " << Y_VAR << " = " << K_VAR << " * X + " << C_VAR << std::endl;
+		std::cout << " (" << Y_VAR << " " << K_VAR << " " << C_VAR << ")"<<" RESULT => " << RESULT<< std::endl;
 		Y_VAR += std::rand() % (mystruct_t->Y_MAX - mystruct_t->Y_MIN + 1) + mystruct_t->Y_MIN;
 		K_VAR += std::rand() % (mystruct_t->K_MAX - mystruct_t->K_MIN + 1) + mystruct_t->K_MIN;
 	}
@@ -36,7 +39,7 @@ void MyStruct::randEquation(MyStruct* mystruct_t)
 int		MIN_Y = 0,
 		MAX_Y = 0,
 		MIN_K = 0,
-		MAX_K = 0;
+		MAX_K = 0; 
 
 unsigned int COUNT = 0;
 
@@ -44,7 +47,6 @@ int main(void)
 {
 	std::cout << "Welcome!\n";
 	std::cout << "Enter the number of equations: \n";
-	std::cin >> COUNT;
 	while (!(std::cin >> COUNT)) 
 	{
 		std::cout << "Bad value!\n";
