@@ -32,7 +32,7 @@ if(isset($_SESSION['user']))
 		   echo '<p>' . $_SESSION['message'] . '</p>'; 
 		}  
 	   unset($_SESSION['message']);
-	   ?>  
+	   ?>
     </div>
   </div>
 </body>

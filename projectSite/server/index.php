@@ -19,7 +19,7 @@
 		{
 			if (isset($_SESSION['last_activity']) && time() - $_SESSION['last_activity'] > 15*60) 
 			{
-				header("Location: inc/logout.php"); 
+				header("Location: inc/logout.php");
 			}
 			
 			$_SESSION['last_activity'] = time();
@@ -61,11 +61,33 @@
             <div class="news-container">
                 <div class="news">
                     Новости трекера
-					<div>ТУТ должен быть СКРИПТ ПХП :) </div>
+					<?php
+						require_once "inc/connectdb.php";
+						
+						$selection_article = "SELECT `id_article`, `title`, `date`, `description` FROM `aritcle`";
+						$check_article = mysqli_query($con, $selection_article);
+						
+						if(mysqli_num_rows($check_article) > 0)
+						{
+							foreach($check_article as $row)
+							{
+								echo "<div>" . $row["title"] . "</div>";
+								echo "<div>" . $row["date"] . "</div>";
+								echo "<div>" . $row["description"] . "</div>";
+							}
+						}
+						else
+						{
+							echo " Empty:( : " . " Error: ". mysqli_error($con);
+						}
+						mysqli_close($con);
+					?>
+					<div>
                 </div>
             </div>
         </div>
     </div>
+	
     <div class="footer">
         <div class="creators-info">
             <h3>Информация о создателях</h3>

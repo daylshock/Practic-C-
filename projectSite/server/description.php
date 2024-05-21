@@ -20,7 +20,6 @@
     <form action="" method="post">
       <label for="title">Название вашего софта:</label>
       <input type="text" id="title" name="title" required />
-
       <label for="description">Описание вашего софта:</label>
       <textarea id="description" name="description" rows="5" required></textarea>
       <label for="category">Выберите категорию:</label>

@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	
 	if(!isset($_SESSION['user']) || isset($_SESSION['user']) && $_SESSION['user']['status'] != 1)
 	{
 		header("Location: ../index.php");
@@ -33,7 +34,7 @@
 				<?php
 					require_once "inc/connectdb.php";
 						
-						$selection_article = "SELECT `title`, `date` FROM `aritcle`";
+						$selection_article = "SELECT `id_article`, `title`, `date` FROM `aritcle`";
 						$check_article = mysqli_query($con, $selection_article);
 							
 							if(mysqli_num_rows($check_article) > 0)
@@ -44,12 +45,14 @@
 									print('<tr>');
 										echo "<th>" . $row["title"] . "</th>";
 										echo "<th>" . $row["date"] . "</th>";
-										print('
-										<td>
-											<a href="edit_news.php">Редактировать</a>
-											<a href="delete_news.php">Удалить</a> 
-										</td>
-										');
+										echo "<td><form action='inc/delarticle.php' method='post'>
+										<input type='hidden' name='id_article' value='" . $row["id_article"] . "' />
+										<input type='submit' value='Удалить'>
+										</form></td>";
+										echo "<td><form action='edit_news.php' method='post'>
+										<input type='hidden' name='id_article' value='" . $row["id_article"] . "' />
+										<input type='submit' value='Обновить'>
+										</form></td>";
 									print('<tr>');	
 								}
 							}
