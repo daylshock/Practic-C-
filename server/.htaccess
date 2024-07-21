@@ -1,0 +1,7 @@
+Header set X-Content-Type-Options nosniff
+AddDefaultCharset utf-8
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule .* index.php [L]
+
