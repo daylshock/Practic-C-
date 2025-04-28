@@ -1,4 +1,0 @@
-﻿  stringFormat.cpp
-C:\Users\Долбаеб\source\repos2\stringFormat\stringFormat\stringFormat.cpp(24,17): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-C:\Users\Долбаеб\source\repos2\stringFormat\stringFormat\stringFormat.cpp(28,20): warning C4018: <: несоответствие типов со знаком и без знака
-  stringFormat.vcxproj -> C:\Users\Долбаеб\source\repos2\stringFormat\x64\Debug\stringFormat.exe
